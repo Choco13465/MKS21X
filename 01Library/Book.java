@@ -26,7 +26,9 @@ public class Book{
     public void Setisbn(string i){
 	ISBN = i;
     }
-    public string toString(){
-	System.out.println ("+Title", "+Author", "+ISBN+");
-    }
+  /*    
+public string toString(){
+System.out.println ("+Title", "+Author", "+ISBN+");
+}
+  */
 }
