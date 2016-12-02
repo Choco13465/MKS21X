@@ -23,10 +23,7 @@ abstract class LibraryBook extends Book implements Comparable<LibraryBook>{
       else {return 1;}}
   }
   
-/*  
- * public String toString(){
- * super();
- * //additional stuff
- * }
- */
+  public String toString(){
+    s += Getcallnumber();
+  }
 }

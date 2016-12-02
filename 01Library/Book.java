@@ -1,11 +1,14 @@
 public class Book{
     private String Author;
     private String Title;
-    private String ISBN;
+    private String isbn;
 
     public Book(){
     }
     public Book(String a, String t, String i){
+      Setauthor(a);
+      Settitle(t);
+      Setisbn(i);
     }
 
     public String Getauthor(){
@@ -15,7 +18,7 @@ public class Book{
  return Title;
     }
     public String Getisbn(){
- return ISBN;
+ return isbn;
     }
     public void Setauthor(String a){
  Author = a;
@@ -24,11 +27,12 @@ public class Book{
  Title = t;
     }
     public void Setisbn(String i){
- ISBN = i;
+ isbn = i;
     }
-/*    
- * public String toString(){
- * System.out.println ("Title", "+Author", "+ISBN+");
- * }
- * /
+ 
+  public String toString(){
+    String s = "" + Gettitle() + ", " + Getauthor() + ", " + Getisbn();
+    return s;
+  }
+
 }
