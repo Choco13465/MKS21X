@@ -1,4 +1,4 @@
-class ReferenceBook extends LibraryBook{
+public class ReferenceBook extends LibraryBook{
   private String collection;
   
   public ReferenceBook(String a, String t, String i, String ca, String co){
@@ -21,7 +21,9 @@ class ReferenceBook extends LibraryBook{
   public String circulatingStatus() {
     System.out.println ("non-circulating reference book");
   }
-  
-  
+  public String toString() {
+    String s = "" + super.toString() + Getcollection();
+    return s;
+  }
 }
   
