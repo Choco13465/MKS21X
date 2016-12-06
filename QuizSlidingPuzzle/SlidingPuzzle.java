@@ -13,15 +13,16 @@ public class SlidingPuzzle {
   
   public boolean isDone() {
     int counter = 1;
-    boolean boo = true;
-    for (int i = 0; i < side || boo == false; i++){
-      for (int x = 0; x < side || boo == false; x++){
-        if (values[i][x] != counter) {
-          boo = false;}
-        counter++;
+    for (int i = 0; i < side; i++){
+      for (int x = 0; x < side; x++){
+        if (values[i][x] == counter) {
+          counter++;}
+        else if(values[i][x] != 0){
+          boo = false;
+        }
       }
     }
-    return boo;
+    return true;
   }
   /*
   public boolean isDone() {
@@ -35,5 +36,12 @@ public class SlidingPuzzle {
       }
     }
     return boo;
-  }*/
+  }
+  public boolean isDone(){
+  int size = values.length;
+  for (int = 0; i<size * size - 1; i++){
+  int current = vaules[i /size][i %size];
+  int next = values[
+  
+  */
 }
