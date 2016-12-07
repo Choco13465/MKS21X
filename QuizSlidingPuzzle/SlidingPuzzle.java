@@ -41,7 +41,7 @@ public class SlidingPuzzle {
   int size = values.length;
   for (int = 0; i<size * size - 1; i++){
   int current = vaules[i /size][i %size];
-  int next = values[
+  int next = values[(i + 1) / size][(i+1) % size];
   
   */
 }
