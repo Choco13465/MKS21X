@@ -73,6 +73,7 @@ public class Barcode// implements Comparable<Barcode>{
     public static String toCode(String zip){
       testZip(zip);
       String zel = "|";
+      zip += checkSum(zip);
       for (int i = 0; i < zip.length(); i++){
         switch(zip.charAt(i)-'0'){
           case 1: zel += ":::||";
