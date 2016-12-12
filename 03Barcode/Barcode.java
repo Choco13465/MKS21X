@@ -23,7 +23,7 @@ public class Barcode// implements Comparable<Barcode>{
         }
       }
     }
-    
+   
     public static void testCode(String code){
       if (code.length() != 32){
         throw new IllegalArgumentException("code is not the correct length");
@@ -36,8 +36,20 @@ public class Barcode// implements Comparable<Barcode>{
       if (code.charAt(0) != '|' || code.charAt(31) != '|'){
         throw new IllegalArgumentException("guard rails are incorrect");
       }
-      zel = "" + code.substring(1, 30);
-      for (//unfinished
+      for (int i = 1; i < code.length() - 6; i += 5){
+        if (code.substring(i,i+5).equals(":::||") == false ||
+            code.substring(i,i+5).equals("::|:|") == false ||
+            code.substring(i,i+5).equals("::||:") == false ||
+            code.substring(i,i+5).equals(":|::|") == false ||
+            code.substring(i,i+5).equals(":|:|:") == false ||
+            code.substring(i,i+5).equals(":||::") == false ||
+            code.substring(i,i+5).equals("|:::|") == false ||
+            code.substring(i,i+5).equals("|::|:") == false ||
+            code.substring(i,i+5).equals("|:|::") == false ||
+            code.substring(i,i+5).equals("||:::") == false){
+          throw new IllegalArgumentException("encoded ints are invalid");
+        }
+      }
     }
     
 //methods
@@ -89,19 +101,77 @@ public class Barcode// implements Comparable<Barcode>{
       return zel;
     }
     
-/*    public static String toZip(String code){
-      errortestcode(code);
+    public static String toZip(String code){
+      testCode(code);
+      String zel = "";
       for (int i = 1; i < code.length() - 6; i += 5){
-   if (code.substring(i,i+5) 
-*/   
-    
-    /*
-    public int compareTo(String zip, String zip2){
+          switch(code.substring(i,i+5)){
+            case ":::||": zel += 1;
+            break;
+            case "::|:|": zel += 2;
+            break;
+            case "::||:": zel += 3;
+            break;
+            case ":|::|": zel += 4;
+            break;
+            case ":|:|:": zel += 5;
+            break;
+            case ":||::": zel += 6;
+            break;
+            case "|:::|": zel += 7;
+            break;
+            case "|::|:": zel += 8;
+            break;
+            case "|:|::": zel += 9;
+            break;
+            case "||:::": zel += 0;
+            break;
+          }
+       }
+      if (checkSum(zel.substring(0, zel.length())) != zel.substring(zel.length()-1)){
+        throw new IllegalArgumentException("checksum is invalid");
+      }
+      return zel;
+    }
+       
+    public static int compareTo(String zip, String zip2){
+      testZip(zip);
+      testZip(zip2);
       int temp = 0;
-      for (int i = 0; i < zip.length() || temp != 0; i++){
-        //find substring, ssubtract, set as variable, return if temp != 0
+      for (int i = 0; i < zip.length(); i++){
+        temp = zip.charAt(i) - zip2.charAt(i);
+        if (temp != 0) {
+          break;
+        }
       }
       return temp;
     }
-    */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
