@@ -29,7 +29,7 @@ public class Barcode// implements Comparable<Barcode>{
         throw new IllegalArgumentException("code is not the correct length");
       }
       for (int i = 0; i < code.length(); i++){
-        if (code.charAt(i) != '|' || code.charAt(i) != ':'){
+        if (code.charAt(i) != '|' && code.charAt(i) != ':'){
           throw new IllegalArgumentException("non barcode characters were used");
         }
       }
@@ -37,15 +37,15 @@ public class Barcode// implements Comparable<Barcode>{
         throw new IllegalArgumentException("guard rails are incorrect");
       }
       for (int i = 1; i < code.length() - 6; i += 5){
-        if (code.substring(i,i+5).equals(":::||") == false ||
-            code.substring(i,i+5).equals("::|:|") == false ||
-            code.substring(i,i+5).equals("::||:") == false ||
-            code.substring(i,i+5).equals(":|::|") == false ||
-            code.substring(i,i+5).equals(":|:|:") == false ||
-            code.substring(i,i+5).equals(":||::") == false ||
-            code.substring(i,i+5).equals("|:::|") == false ||
-            code.substring(i,i+5).equals("|::|:") == false ||
-            code.substring(i,i+5).equals("|:|::") == false ||
+        if (code.substring(i,i+5).equals(":::||") == false &&
+            code.substring(i,i+5).equals("::|:|") == false &&
+            code.substring(i,i+5).equals("::||:") == false &&
+            code.substring(i,i+5).equals(":|::|") == false &&
+            code.substring(i,i+5).equals(":|:|:") == false &&
+            code.substring(i,i+5).equals(":||::") == false &&
+            code.substring(i,i+5).equals("|:::|") == false &&
+            code.substring(i,i+5).equals("|::|:") == false &&
+            code.substring(i,i+5).equals("|:|::") == false &&
             code.substring(i,i+5).equals("||:::") == false){
           throw new IllegalArgumentException("encoded ints are invalid");
         }
@@ -105,7 +105,7 @@ public class Barcode// implements Comparable<Barcode>{
     public static String toZip(String code){
       testCode(code);
       String zel = "";
-      for (int i = 1; i < code.length() - 6; i += 5){
+      for (int i = 1; i < code.length() - 5; i += 5){
           switch(code.substring(i,i+5)){
             case ":::||": zel += 1;
             break;
@@ -129,10 +129,10 @@ public class Barcode// implements Comparable<Barcode>{
             break;
           }
        }
-      if (checkSum(zel.substring(0, zel.length())) != zel.substring(zel.length()-1)){
+      if ((checkSum(zel.substring(0, zel.length()-1))).equals(zel.substring(zel.length()-1)) == false){
         throw new IllegalArgumentException("checksum is invalid");
       }
-      return zel;
+      return zel.substring(0,zel.length()-1);
     }
        
     public static int compareTo(String zip, String zip2){

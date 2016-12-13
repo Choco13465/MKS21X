@@ -6,7 +6,7 @@ public class Marcode {
     System.out.println (s.toString("01234"));
     System.out.println (s.toCode("12345"));
     System.out.println (s.toString("12345"));
-    System.out.println (s.compareTo("00000", "90001"));
+    System.out.println (s.toZip(s.toCode("01234")));
   }
   
 }
