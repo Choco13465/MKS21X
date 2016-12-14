@@ -2,7 +2,7 @@ public class Corts {
   public static void main (String [] args) {
     int[] s = {2, 6, 1, 3, 9};
     
-    Sorts.selectionSort(s);
+    Sorts.insertionSort(s);
     System.out.println (s[0]);
     System.out.println (s[1]);
     System.out.println (s[2]);
