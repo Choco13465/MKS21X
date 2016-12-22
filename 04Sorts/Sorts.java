@@ -18,10 +18,10 @@ public class Sorts{
   }
   
   public static void insertionSort(int[] data){
-    int zel = data[0];
+    int zel = 0;
     for (int i = 1; i < data.length-1; i++){
-      zel = data[i+1];
       for (int x = i+1; x>-1; x--){
+        zel = data[i+1];
         if (data[i] < data[x]){
           data[x] = zel;
         }
@@ -31,5 +31,32 @@ public class Sorts{
       }
     }
   }
+  
+  public static void bubbleSort(int[] data){
+    int zel = 0;
+    boolean done = true;
+    for (int i = 0; i < data.length-1; i++){
+      if (data[i] > data[i+1]){
+        zel = data[i];
+        data[i] = data[i+1];
+        data[i+1] = zel;
+        done = false;
+      }
+    }
+    if (done == false){
+      bubbleSort(data);
+    }
+  }
+    
+    
+      
           
+        
+        
+        
+        
+        
+        
+        
+        
 }

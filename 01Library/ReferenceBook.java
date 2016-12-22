@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class ReferenceBook extends LibraryBook{
   private String collection;
   
@@ -12,14 +14,14 @@ public class ReferenceBook extends LibraryBook{
   public void Setcollection(String co){
     collection = co;
   }
-  public void checkout(String patron, String due) throws RefBkException{
-    throw new RefBkException("Cannot check out a reference book!");
+  public void checkout(String patron, String due){
+    throw new IllegalArgumentException("Cannot check out a reference book!");
   }
-  public void returned() throws RefBkException {
-    throw new RefBkException("Reference book couldnot have been checked out -- return impossible.");
+  public void returned(){
+    throw new IllegalArgumentException("Reference book could not have been checked out -- return impossible.");
   }
   public String circulatingStatus() {
-    System.out.println ("non-circulating reference book");
+    throw new IllegalArgumentException("non-circulating reference book");
   }
   public String toString() {
     String s = "" + super.toString() + Getcollection();
